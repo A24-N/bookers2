@@ -1,5 +1,37 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>User info</h1>
+<%= image_tag current_user.get_profile_image(100,100) %>
+<table>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= @book.user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= @book.user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
 
-  <p>ショップ名：<%= @book.title %></p>
-  <p>説明：<%= @book.body %></p>
+<%= link_to "編集", edit_user_path(current_user.id) %>
+
+<h1>New book</h1>
+<%= form_with model: Book do |f| %>
+  <%= f.label :Title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :Opinion %><br>
+  <%= f.text_area :body %><br>
+  <%= f.submit 'Create Book' %>
+<% end %>
+<h1>Book detail</h1>
+<table>
+  <tbody>
+    <tr>
+      <td><%= image_tag @book.user.get_profile_image(100,100) %><br><%= @book.user.name %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
+      <td><%= link_to "Edit", edit_book_path %></td>
+      <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+    </tr>
+   </tbody>
+</table>
