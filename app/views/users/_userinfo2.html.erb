@@ -1,0 +1,22 @@
+<!--Userinfo_作成者-->
+
+<h1>User info</h1>
+<%= image_tag @book.user.get_profile_image(100,100) %>
+<table>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= @book.user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= @book.user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @book.user_id == current_user.id %>
+  <%= link_to "編集", edit_user_path(current_user.id) %>
+<% else %>
+  <%= link_to "マイページ", user_path(current_user.id) %>
+<% end %>
