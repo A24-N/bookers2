@@ -9,8 +9,16 @@
 <table>
   <tbody>
     <tr>
-      <td><%= image_tag @book.user.get_profile_image(100,100) %><br><%= @book.user.name %></td>
-      <td><%= @book.title %></td>
+      <td>
+        <%= link_to(user_path(@book.user_id)) do %>
+          <%= image_tag @book.user.get_profile_image(100,100) %><br><%= @book.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to(book_path(@book.id)) do %>
+          <%= @book.title %>
+        <% end %>
+      </td>
       <td><%= @book.body %></td>
       <% if @book.user_id == current_user.id %>
         <td><%= link_to "Edit", edit_book_path %></td>
