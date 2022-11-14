@@ -1,8 +1,12 @@
-<h1>New book</h1>
+<h1 class="mt-3">New book</h1>
 <%= form_with model: Book do |f| %>
-  <%= f.label :Title %><br>
-  <%= f.text_field :title %><br>
-  <%= f.label :Opinion %><br>
-  <%= f.text_area :body %><br>
-  <%= f.submit 'Create Book' %>
+  <div class="form-group mb-0">
+    <%= f.label :Title %><br>
+    <%= f.text_field :title, class: 'form-control' %><br>
+  </div>
+  <div class="form-group mb-0">
+    <%= f.label :Opinion %><br>
+    <%= f.text_area :body, class: 'form-control' %><br>
+  </div>
+    <%= f.submit 'Create Book',class: 'btn btn-success' %>
 <% end %>
