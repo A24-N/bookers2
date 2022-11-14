@@ -1,26 +1,33 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3">
+    <!--Userinfo2(自分)の呼び出し-->
+    <%= render 'userinfo', book: @book %>
 
-<!--Userinfo2(自分)の呼び出し-->
-<%= render 'userinfo', book: @book %>
+    <!--Newbookの呼び出し-->
+    <%= render 'newbook', book: @book %>
+    </div>
 
-<!--Newbookの呼び出し-->
-<%= render 'newbook', book: @book %>
-
-<h1>Users</h1>
-<table>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image(100,100) %></td>
-      <td><%= user.name %></td>
-      <td><%= link_to "Show", user_path(user.id) %></td>
-    </tr>
-    <% end %>
-   </tbody>
-</table>
+    <div class="col-8 offset-1">
+      <h1>Users</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-3" scope="col">image</th>
+            <th scope="col">name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td scope="row"><%= image_tag user.get_profile_image(80,80) %></td>
+            <td scope="row"><%= user.name %></td>
+            <td scope="row"><%= link_to "Show", user_path(user.id) %></td>
+          </tr>
+          <% end %>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>

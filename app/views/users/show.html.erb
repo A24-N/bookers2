@@ -3,15 +3,15 @@
     <div class="col-3">
       <h1>User info</h1>
       <%= image_tag @user.get_profile_image(100,100) %>
-      <table class="table">
+      <table class="table font-weight-bold">
         <tbody>
           <tr>
-            <td scope="row"><b>name</b></td>
-            <td scope="row"><b><%= @user.name %></b></td>
+            <td scope="row">name</td>
+            <td scope="row"><%= @user.name %></td>
           </tr>
           <tr>
-            <td scope="row"><b>introduction</b></td>
-            <td scope="row"><b><%= @user.introduction %></b></td>
+            <td scope="row">introduction</td>
+            <td scope="row"><%= @user.introduction %></td>
           </tr>
         </tbody>
       </table>
@@ -21,16 +21,18 @@
           <i class="fas fa-user-cog"></i>
         <% end %>
       <% else %>
-        <%= link_to "マイページ", user_path(current_user.id) %>
+        <%= link_to user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
       <% end %>
 
 
       <!--Newbookの呼び出し-->
       <%= render 'newbook', book: @book %>
     </div>
-    <div class="col-9">
+    <div class="col-8 offset-1">
       <h1>Books</h1>
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col"></th>

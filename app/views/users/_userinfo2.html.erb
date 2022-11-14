@@ -2,21 +2,25 @@
 
 <h1>User info</h1>
 <%= image_tag @book.user.get_profile_image(100,100) %>
-<table>
+<table class="table font-weight-bold">
   <tbody>
     <tr>
-      <td>name</td>
-      <td><%= @book.user.name %></td>
+      <td scope="row">name</td>
+      <td scope="row"><%= @book.user.name %></td>
     </tr>
     <tr>
-      <td>introduction</td>
-      <td><%= @book.user.introduction %></td>
+      <td scope="row">introduction</td>
+      <td scope="row"><%= @book.user.introduction %></td>
     </tr>
   </tbody>
 </table>
 
 <% if @book.user_id == current_user.id %>
-  <%= link_to "編集", edit_user_path(current_user.id) %>
+  <%= link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 <% else %>
-  <%= link_to "マイページ", user_path(current_user.id) %>
+  <%= link_to user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 <% end %>

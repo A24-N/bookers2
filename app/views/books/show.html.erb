@@ -1,29 +1,35 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-3">
+      <!--Userinfo2(作成者)の呼び出し-->
+      <%= render 'users/userinfo2', book: @book %>
 
-<!--Userinfo2(作成者)の呼び出し-->
-<%= render 'users/userinfo2', book: @book %>
-
-<!--Newbookの呼び出し-->
-<%= render 'users/newbook', book: @book %>
-
-<h1>Book detail</h1>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to(user_path(@book.user_id)) do %>
-          <%= image_tag @book.user.get_profile_image(100,100) %><br><%= @book.user.name %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to(book_path(@book.id)) do %>
-          <%= @book.title %>
-        <% end %>
-      </td>
-      <td><%= @book.body %></td>
-      <% if @book.user_id == current_user.id %>
-        <td><%= link_to "Edit", edit_book_path %></td>
-        <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
-      <% end %>
-    </tr>
-   </tbody>
-</table>
+      <!--Newbookの呼び出し-->
+      <%= render 'users/newbook', book: @book %>
+    </div>
+    <div class="col-8 offset-1">
+      <h1>Book detail</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td scope="row">
+              <%= link_to(user_path(@book.user_id)) do %>
+                <%= image_tag @book.user.get_profile_image(100,100) %><br><%= @book.user.name %>
+              <% end %>
+            </td>
+            <td scope="row">
+              <%= link_to(book_path(@book.id)) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td scope="row"><%= @book.body %></td>
+            <% if @book.user_id == current_user.id %>
+              <td scope="row"><%= link_to "Edit", edit_book_path, class: 'btn btn-success btn-sm' %></td>
+              <td scope="row"><%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+            <% end %>
+          </tr>
+         </tbody>
+      </table>
+    </div>
+  </div>
+</div>
