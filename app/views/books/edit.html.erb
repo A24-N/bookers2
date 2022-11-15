@@ -2,20 +2,19 @@
   <div class="row">
     <div class="mx-auto col-6">
       <h1>Editing Book</h1>
-<!--errors_messagesの呼び出し-->
-        <%= render 'books/errors_messages', e: @book %>
-        <%= form_with model: @book do |f| %>
+      <!--errors_messagesの呼び出し-->
+      <%= render 'books/errors_messages', e: @book %>
+      <%= form_with model: @book do |f| %>
         <div class="form-group mb-0">
           <%= f.label :Title %><br>
           <%= f.text_field :title, class: 'form-control' %><br>
         </div>
         <div class="form-group mb-0">
-        <%= f.label :Opinion %><br>
-        <%= f.text_area :body, class: 'form-control' %><br>
+          <%= f.label :Opinion %><br>
+          <%= f.text_area :body, class: 'form-control' %><br>
         </div>
         <%= f.submit 'Update Book', class: 'btn btn-success mb-3' %>
       <% end %>
-
       <%= link_to "Show", book_path(@book.id) %>
       |
       <%= link_to "Back", books_path %>

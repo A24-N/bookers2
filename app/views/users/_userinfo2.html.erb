@@ -1,26 +1,20 @@
 <!--Userinfo_作成者-->
 
 <h2>User info</h2>
-<%= image_tag @book.user.get_profile_image(100,100) %>
+<%= image_tag variable.get_profile_image(100,100) %>
 <table class="table font-weight-bold">
   <tbody>
     <tr>
       <td scope="row">name</td>
-      <td scope="row"><%= @book.user.name %></td>
+      <td scope="row"><%= variable.name %></td>
     </tr>
     <tr>
       <td scope="row">introduction</td>
-      <td scope="row"><%= @book.user.introduction %></td>
+      <td scope="row"><%= variable.introduction %></td>
     </tr>
   </tbody>
 </table>
 
-<% if @book.user_id == current_user.id %>
-  <%= link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
+  <%= link_to edit_user_path(variable.id), class: 'btn btn-outline-secondary btn-block' do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
-<% else %>
-  <%= link_to user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
-<% end %>
