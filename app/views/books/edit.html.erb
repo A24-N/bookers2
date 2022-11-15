@@ -2,6 +2,8 @@
   <div class="row">
     <div class="mx-auto col-6">
       <h1>Editing Book</h1>
+<!--errors_messagesの呼び出し-->
+        <%= render 'books/errors_messages', e: @book %>
         <%= form_with model: @book do |f| %>
         <div class="form-group mb-0">
           <%= f.label :Title %><br>

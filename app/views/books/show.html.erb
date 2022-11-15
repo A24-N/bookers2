@@ -3,9 +3,8 @@
     <div class="col-3">
       <!--Userinfo2(作成者)の呼び出し-->
       <%= render 'users/userinfo2', book: @book %>
-
-      <!--Newbookの呼び出し-->
-      <%= render 'users/newbook', book: @book %>
+      <!--Newbook-->
+    <%= render 'users/newbook', book: @nbook %>
     </div>
     <div class="col-8 offset-1">
       <h1>Book detail</h1>
@@ -25,7 +24,7 @@
             <td scope="row"><%= @book.body %></td>
             <% if @book.user_id == current_user.id %>
               <td scope="row"><%= link_to "Edit", edit_book_path, class: 'btn btn-success btn-sm' %></td>
-              <td scope="row"><%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+              <td scope="row"><%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger btn-sm', "data-confirm" => "本当に消しますか？" %></td>
             <% end %>
           </tr>
          </tbody>
